@@ -1,4 +1,4 @@
-import random;
+import myLib
 import Data
 # SuppReq = int(input('Enter required number of suppliers'));
 # print("Required number of suppliers are",SuppReq);
@@ -93,30 +93,13 @@ class Supplier:
     CityName = property(get_city_name, set_city_name, del_city_name, "CityName's docstring")
     
     
-def generateRandomCity(inputVar):
-    return(random.choice(inputVar));
 
-def generateRandomDate():
-    year = random.randint(1990,2016);
-    month = random.randint(1,12);
-    if month == 2:
-        l_year = isLeapYear(year);
-        if l_year == True:
-            date = random.randint(1,29);
-        else:
-            date = random.randint(1,28)
-    elif month in (4,6,9,11) :
-        date = random.randint(1,30);
-    else:
-        date = random.randint(1,31);
-    return (str(year)+'-'+str(month)+'-'+str(date));
-def isLeapYear(year):
-    if ((year%4 == 0) & (year%100 != 0)) | (year%400 == 0):
-        return True
-    else:
-        return False
 
 
 for key,value in Data.Suppliers.items():
-    supplierObj = Supplier('',key,value,generateRandomDate(),generateRandomCity(Data.Cities))
+    supplierObj = Supplier('',
+                           key,
+                           value,
+                           myLib.generateRandomDate(),
+                           myLib.generateRandomFromList(Data.Cities));
     print(supplierObj.get_supplier_id(),supplierObj.get_supplier_name(),supplierObj.get_start_date(),supplierObj.get_city_name());
