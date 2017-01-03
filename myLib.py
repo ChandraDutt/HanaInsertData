@@ -14,9 +14,7 @@ def generatePhoneNo():
 
 
 def generateSex():
-    sex = ['M','F'];
-    return(random.choice(sex));
-
+    return(random.choice(['M','F']));
 
 def generateRandomDate():
     year = random.randint(1990,2016);
